@@ -30,8 +30,8 @@ RobotCommand::RobotCommand(int right_frontPower, int left_frontPower, int right_
 void RobotCommand::front(int time)
 {
 	//右タイヤ
-	digitalWrite(6,HIGH);
-	digitalWrite(7,LOW);
+	digitalWrite(6,LOW);
+	digitalWrite(7,HIGH);
 
 	//左タイヤ
 	digitalWrite(8,LOW);
@@ -50,8 +50,8 @@ void RobotCommand::front(int time)
 void RobotCommand::back(int time)
 {
 	//右タイヤ
-	digitalWrite(6,LOW);
-	digitalWrite(7,HIGH);
+	digitalWrite(6,HIGH);
+	digitalWrite(7,LOW);
 
 	//左タイヤ
 	digitalWrite(8,HIGH);
@@ -68,8 +68,8 @@ void RobotCommand::back(int time)
 void RobotCommand::left(int time)
 {
 	//右タイヤ
-	digitalWrite(6,HIGH);
-	digitalWrite(7,LOW);
+	digitalWrite(6,LOW);
+	digitalWrite(7,HIGH);
 
 	//左タイヤ
 	digitalWrite(8,LOW);
