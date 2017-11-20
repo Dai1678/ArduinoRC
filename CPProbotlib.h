@@ -14,7 +14,7 @@ public:
 	void wait(int time);
 
 private:
-	int val = 100;  //モーター基礎出力量
+	int val = 0;  //モーター基礎出力量
 
 	//モーター追加出力量
 	int frontPower_r ;

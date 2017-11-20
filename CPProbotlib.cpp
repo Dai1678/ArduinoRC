@@ -1,6 +1,13 @@
 #include "Arduino.h"
 #include "CPProbotlib.h"
 
+/*
+	ピン番号 6 : HIGH 右タイヤ前進
+	ピン番号 7 : HIGH 右タイヤ後進
+	ピン番号 8 : HIGH 左タイヤ前進
+	ピン番号 9 : HIGH 左タイヤ後進
+*/
+
 RobotCommand::RobotCommand(int right_frontPower, int left_frontPower, int right_backPower, int left_backPower, int right_Power, int left_Power)
 {
 	//右タイヤ
@@ -30,12 +37,12 @@ RobotCommand::RobotCommand(int right_frontPower, int left_frontPower, int right_
 void RobotCommand::front(int time)
 {
 	//右タイヤ
-	digitalWrite(6,LOW);
-	digitalWrite(7,HIGH);
+	digitalWrite(6,HIGH);
+	digitalWrite(7,LOW);
 
 	//左タイヤ
-	digitalWrite(8,LOW);
-	digitalWrite(9,HIGH);
+	digitalWrite(8,HIGH);
+	digitalWrite(9,LOW);
 
 	//出力調整
 	analogWrite(3,val + frontPower_r);
@@ -50,34 +57,16 @@ void RobotCommand::front(int time)
 void RobotCommand::back(int time)
 {
 	//右タイヤ
-	digitalWrite(6,HIGH);
-	digitalWrite(7,LOW);
-
-	//左タイヤ
-	digitalWrite(8,HIGH);
-	digitalWrite(9,LOW);
-
-	//出力調整
-	analogWrite(3,val + backPower_r);
-	analogWrite(5,val + backPower_l);
-
-  delay(time);
-}
-
-//左回転
-void RobotCommand::left(int time)
-{
-	//右タイヤ
 	digitalWrite(6,LOW);
 	digitalWrite(7,HIGH);
 
 	//左タイヤ
 	digitalWrite(8,LOW);
-	digitalWrite(9,LOW);
+	digitalWrite(9,HIGH);
 
 	//出力調整
-	analogWrite(3,val + power_r);
-	analogWrite(5,val);
+	analogWrite(3,val + backPower_r);
+	analogWrite(5,val + backPower_l);
 
   delay(time);
 }
@@ -90,12 +79,30 @@ void RobotCommand::right(int time)
 	digitalWrite(7,LOW);
 
 	//左タイヤ
-	digitalWrite(8,LOW);
-	digitalWrite(9,HIGH);
+	digitalWrite(8,HIGH);
+	digitalWrite(9,LOW);
 
 	//出力調整
 	analogWrite(3,val);
 	analogWrite(5,val + power_l);
+
+  delay(time);
+}
+
+//左回転
+void RobotCommand::left(int time)
+{
+	//右タイヤ
+	digitalWrite(6,HIGH);
+	digitalWrite(7,LOW);
+
+	//左タイヤ
+	digitalWrite(8,LOW);
+	digitalWrite(9,LOW);
+
+	//出力調整
+	analogWrite(3,val + power_r);
+	analogWrite(5,val);
 
   delay(time);
 }
