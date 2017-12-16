@@ -71,6 +71,25 @@ void RobotCommand::back(int time)
   delay(time);
 }
 
+//右回転 (その場で回転)
+void RobotCommand::right(int time)
+{
+	//左タイヤ
+	digitalWrite(6,HIGH);
+	digitalWrite(7,LOW);
+
+	//右タイヤ
+	digitalWrite(8,LOW);
+	digitalWrite(9,HIGH);
+
+	//出力調整
+	analogWrite(3,val + power_l);
+	analogWrite(5,val + power_r);
+
+  delay(time);
+}
+
+/*
 //右回転 (右タイヤを軸に回転)
 void RobotCommand::right(int time)
 {
@@ -88,7 +107,27 @@ void RobotCommand::right(int time)
 
   delay(time);
 }
+*/
 
+//左回転 (その場で回転)
+void RobotCommand::left(int time)
+{
+	//左タイヤ
+	digitalWrite(6,LOW);
+	digitalWrite(7,HIGH);
+
+	//右タイヤ
+	digitalWrite(8,HIGH);
+	digitalWrite(9,LOW);
+
+	//出力調整
+	analogWrite(3,val + power_l);
+	analogWrite(5,val + power_r);
+
+  delay(time);
+}
+
+/*
 //左回転 (左タイヤを軸に回転)
 void RobotCommand::left(int time)
 {
@@ -106,6 +145,7 @@ void RobotCommand::left(int time)
 
   delay(time);
 }
+*/
 
 //停止
 void RobotCommand::wait(int time)
